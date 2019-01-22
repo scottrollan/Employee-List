@@ -17,5 +17,13 @@
 // const sayHello = function() {
 //     console.log("Hello from the click listener");
 // }
+const view = function(){
+    for (i = 0; i < employeeList.length; i++){
+    document.write(employeeList.name);
+    document.write(employeeList.officeNum);
+    document.write(employeeList.phoneNum);
+    }
+  }
+ $('#viewBtn').on('click', view);
 
-// $('.input1').on('click', sayHello);
+$().view();
