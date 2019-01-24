@@ -1,29 +1,57 @@
-// $('.content').html('<p>text added!!!</p>');
+//--------SETTING SOME DEFAULTS--------------//
+$('#addSign').hide();
 
-// $('.top').html('<p>Look at this!</p>');
 
-// $('.content').addClass('myStyle');
-// $('.content').removeClass('myStyle');
-
-// $('.content').toggleClass('myStyle');
-// $('.top').toggleClass('myStyle');
-
-// $('.content').empty();
-
-// $('.input1').val(4);
-
-//For use with the .on function below
-
-// const sayHello = function() {
-//     console.log("Hello from the click listener");
-// }
-const view = function(){
-    for (i = 0; i < employeeList.length; i++){
-    document.write(employeeList.name);
-    document.write(employeeList.officeNum);
-    document.write(employeeList.phoneNum);
-    }
+//--------VIEW BUTTON EVENT------------------//
+const renderViewBtn = function (event) {
+  event.preventDefault();
+  $('#inputArea').hide();
+  for(let i = 0; i < employeeList.length; i++){
+    const nameIn = employeeList[i].name;
+    const officeIn = employeeList[i].officeNum;
+    const phoneIn = employeeList[i].phoneNum;
+    console.log(nameIn, officeIn, phoneIn);
+    $("#viewList").append(`<div>
+		<h3>Name:  ${nameIn}</h3>
+		<p>Office Number:  ${officeIn}</p>
+		<p>Phone number: ${phoneIn}</p>
+	</div>`);
   }
- $('#viewBtn').on('click', view);
+}
+$("#viewBtn").on("click", renderViewBtn);
 
-$().view();
+
+//--------ADD BUTTON EVENT------------------//
+const renderAddBtn = function (event) {
+  event.preventDefault(); //sets page for input
+  $('#viewList').hide();
+  $('#inputArea').show();
+  $('#magGlass').hide();
+  $('#addSign').show();
+}
+  const renderAddEmployee = function(event){ //actual input received and appended
+  const addNameIn = $('#nameInput').val(); 
+  const addOfficeIn = $('#officeNumInput').val();
+  const addPhoneIn = $('#employeePhoneInput').val();
+  for(let i = 0; i < employeeList.length; i++){
+    const nameIn = employeeList[i].name;
+    const officeIn = employeeList[i].officeNum;
+    const phoneIn = employeeList[i].phoneNum;
+    console.log(nameIn, officeIn, phoneIn);
+    $("#viewList").append(`<div>
+		<h3>Name:  ${nameIn}</h3>
+		<p>Office Number:  ${officeIn}</p>
+		<p>Phone number: ${phoneIn}</p>
+	</div>`);
+  }
+  $("#viewList").append(`<div>
+  <h3>Name:  ${addNameIn}</h3>
+  <p>Office Number:  ${addOfficeIn}</p>
+  <p>Phone number: ${addPhoneIn}</p>
+</div>`);
+// $('#inputArea').hide();
+$('#viewList').show();
+}
+$("#addBtn").on("click", renderAddBtn);
+$('#addSign').on('click', renderAddEmployee);
+$('#verifyBtn').on('click', renderVerifyBtn);

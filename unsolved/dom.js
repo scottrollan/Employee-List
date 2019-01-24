@@ -1,5 +1,6 @@
 const $ = function (selector) {
-  const nodeList = document.querySelectorAll(selector);
+ const nodeList = document.querySelectorAll(selector);
+
 
   const text = function(content){
     for (let i = 0; i < nodeList.length; i++) {
@@ -49,6 +50,7 @@ const $ = function (selector) {
     }
   }
 
+  //important for homework, really only used on inputs
   const val = function (content) {
       if(content === undefined){
         return nodeList[0].value; 
@@ -63,6 +65,17 @@ const $ = function (selector) {
     }
   }
 
+  const show = function () {
+    for (let i = 0; i < nodeList.length; i++) {
+      nodeList[i].style.display = '';
+    }
+  }
+
+  const hide = function () {
+    for (let i = 0; i < nodeList.length; i++) {
+      nodeList[i].style.display = 'none';
+    }
+  }
   return {
     text: text,
     html: html,
@@ -73,6 +86,8 @@ const $ = function (selector) {
     append: append,
     prepend: prepend,
     on: on,
-    val: val
+    val: val,
+    show: show,
+    hide: hide,
   };
 }

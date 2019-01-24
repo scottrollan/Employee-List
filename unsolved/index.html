@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Document</title> 
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,26 +13,28 @@
 <div id="pageContainer">
   <aside id="menu">
     <img src="../images/directoryIcon.png" alt="little face" id="directoryIcon">
-    <ul id="menuItems">
-      <li class="alwaysPresent" id="viewBtn">VIEW</li>
-      <li class="alwaysPresent" id="addBtn">ADD</li>
-      <li class="alwaysPresent" id="verifyBtn">VERIFY</li>
-      <li class="optional" id="updateBtn">UPDATE</li>
-      <li class="optional" id="idBtn">DELETE</li>
-    </ul>
+      <button class="alwaysPresent" id="viewBtn">&#8226;&emsp;&emsp;&emsp; VIEW</button>
+      <button class="alwaysPresent" id="addBtn">&#8226;&emsp;&emsp;&emsp; ADD</button>
+      <button class="alwaysPresent" id="verifyBtn">&#8226;&emsp;&emsp;&emsp; VERIFY</button>
+      <button class="optional" id="updateBtn">&#8226;&emsp;&emsp;&emsp; UPDATE</button>
+      <button class="optional" id="idBtn">&#8226;&emsp;&emsp;&emsp; DELETE</button>
+  
   </aside>
 
-  <div id="mainViewport">
-    <input type="text" name="employee name" class="input" id="nameInput">
-    <input type="text" name="employee number" class="input" id="employeeNum">
-    <input type="text" name="employee phone" class="input" id="employeePhone">
-    <img src="../images/magGlass.png" alt="magnifying glass" id="magGlass">
+  <div id="inputArea">
+    <input type="text" name="employee name" class="input" id="nameInput" value="Name"></input>
+    <input type="text" name="employee number" class="input" id="officeNumInput" value="Office number"></input>
+    <input type="text" name="employee phone" class="input" id="employeePhoneInput" value="Phone"></input>
+    <img src="../images/magGlass.png" alt="submit" id="magGlass">
+    <img src="../images/addSign.png" alt="add" id="addSign">
   </div>
+  <div id="viewList"></div>
+
 </div>
 
-  <script src="dom.js"></script>
-  <script src="employeeList.js"></script>
-  <script>src="app.js"</script>
+<script src="employeeList.js"></script>
+<script src="dom.js"></script>
+<script src="app.js"> </script>
 </body>
 
 </html>

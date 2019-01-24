@@ -14,12 +14,22 @@ body {
 }
 
 aside {
-    float: left;
-    position: absolute;
+    /* float: left; */
     background-color: #333333;
     width: 20%;
+    height: 100%;
+    min-height: 200px;
     max-width: 300px;
-    height: 100%
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+
+    /* New code */
+
+
+
 }
 #directoryIcon {
     width: 32px;
@@ -31,23 +41,24 @@ li {
     padding-right: 8px;
 }
 
-#menuItems { /* this is the <ul> */
-    margin-top: 8%;
-}
-
-
 .alwaysPresent,
 .optional {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
     padding-top: 12px;
-    text-align: center;
+    margin-left: 45px;
+    text-align: left;
     font-weight: bold;
     letter-spacing: 3px;
     color: #e5e5e5;
+    background-color: #333333;
+
 
 
 }
 
-#mainViewport {
+#inputArea {
     width: 79%;
     height: 100%;
     margin-top: 12px;
@@ -62,8 +73,30 @@ li {
     vertical-align: middle;
 }
 
+#addSign,
 #magGlass {
     height: 38px;
     width: auto;
     vertical-align: middle;
+}
+#addSign {
+    box-sizing: border-box;
+    border: solid 1px #333333;
+}
+
+div#viewList div {
+    margin-left: 21%;
+    margin-top: 10px;
+    border: solid 1px #999999;
+    padding: 8px;
+    width: 47%;
+    box-sizing: border-box;
+}
+.viewList {
+    margin-left: 21%;
+    margin-top: 10px;
+    border: solid 1px #999999;
+    padding: 8px;
+    width: 47%;
+    box-sizing: border-box;
 }
