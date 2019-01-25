@@ -77,6 +77,12 @@ const $ = function (selector) {
     }
   }
 
+  const leftIndent = function (content) {
+    for (let i = 0; i < nodeList.length; i++) {
+      nodeList[i].style.marginLeft = content;
+    }
+  }
+
   return {
     text: text,
     html: html,
@@ -90,6 +96,7 @@ const $ = function (selector) {
     val: val,
     show: show,
     hide: hide,
+    leftIndent: leftIndent,
   };
 }
 

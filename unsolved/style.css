@@ -85,15 +85,15 @@ li {
     border: solid 1px #333333;
 }
 
-div#viewList div {  /* puts a box around each employee listing */
+div#viewList h2,
+div#viewList h3 {  /*  */
     margin-left: 21%;
     margin-top: 10px;
-    border: solid 1px #999999;
     padding: 8px;
     width: 47%;
-    box-sizing: border-box;
 }
-.viewList {
+
+div#viewList div {  /* puts a box around each employee listing */
     margin-left: 21%;
     margin-top: 10px;
     border: solid 1px #999999;

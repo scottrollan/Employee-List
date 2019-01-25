@@ -5,6 +5,7 @@ $('#addSign').hide();
 //--------VIEW BUTTON EVENT------------------//
 const renderViewBtn = function (event) {
   event.preventDefault();
+  defaultPageLook();
   $('#viewList').show();
 
   $('#inputArea').hide();
@@ -12,9 +13,8 @@ const renderViewBtn = function (event) {
     const nameIn = employeeList[i].name;
     const officeIn = employeeList[i].officeNum;
     const phoneIn = employeeList[i].phoneNum;
-    console.log(nameIn, officeIn, phoneIn);
     $("#viewList").append(`<div>
-		<h3>Name:  ${nameIn}</h3>
+		<h4>Name:  ${nameIn}</h4>
 		<p>Office Number:  ${officeIn}</p>
 		<p>Phone number: ${phoneIn}</p>
 	</div>`);
@@ -37,15 +37,14 @@ const renderAddBtn = function (event) {
     const nameIn = employeeList[i].name;
     const officeIn = employeeList[i].officeNum;
     const phoneIn = employeeList[i].phoneNum;
-    console.log(nameIn, officeIn, phoneIn);
     $("#viewList").append(`<div>
-		<h3>Name:  ${nameIn}</h3>
+		<h4>Name:  ${nameIn}</h4>
 		<p>Office Number:  ${officeIn}</p>
 		<p>Phone number: ${phoneIn}</p>
 	</div>`);
   }
   $("#viewList").append(`<div>
-  <h3>Name:  ${addNameIn}</h3>
+  <h4>Name:  ${addNameIn}</h4>
   <p>Office Number:  ${addOfficeIn}</p>
   <p>Phone number: ${addPhoneIn}</p>
 </div>`);
@@ -54,26 +53,47 @@ $('#viewList').show();
 
 
 //--------VERIFY BUTTON EVENT------------------//
-const renderVerifyBtn = function(){
+const renderVerifyBtn = function(){ //This happens when VERIFY is clicked on the side menu
   event.preventDefault(); //sets page for input
  defaultPageLook();
  $('#officeNumInput').hide();
  $('#employeePhoneInput').hide();
  $('#magGlass').hide();
  $('#verifyMagGlass').show();
-}
-const renderVerifyEmployee = function(event){ //when "submitting" a verify search
-  const verifyName = $('#nameInput').val(); 
-  console.log(verifyName);
-  for(i=0; i<employeeList.length; i++){
-    console.log(employeeList[i].name);
-    if(verifyName == employeeList[i].name){
-      console.log(employeeList[i]);
-      $('#viewList').empty();
-      $('#viewList').show();
+ $('#inputArea').leftIndent("44%");
+ $('#viewList').show();
 
-        }
+}
+const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a verify search
+  const verifyName = $('#nameInput').val(); 
+  let isHere = false;
+  let nameIn = '';
+  let officeIn = '';
+  let phoneIn = '';
+  $('#viewList').empty();
+  for(i=0; i<employeeList.length; i++){
+    if(verifyName == employeeList[i].name){
+      isHere = true;
+      nameIn = employeeList[i].name;
+      officeIn = employeeList[i].officeNum;
+      phoneIn = employeeList[i].phoneNum;
+      break;
+    }
+    else {
+      isHere = false;
+    }
   }
+    if(isHere){
+      $("#viewList").prepend(`<h2>Yes, ${nameIn} is in our system.</h2>
+      <div>
+      <h4>Name:  ${nameIn}</h4>
+      <p>Office Number:  ${officeIn}</p>
+      <p>Phone number: ${phoneIn}</p>
+      </div>`);
+    }
+    else{
+      $('#viewList').prepend(`<h3>Sorry, ${verifyName} is not in our system.`)
+    }
 }
   
 
