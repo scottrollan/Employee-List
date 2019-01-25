@@ -25,11 +25,11 @@ const renderViewBtn = function (event) {
 //--------ADD BUTTON EVENT------------------//
 const renderAddBtn = function (event) {
   event.preventDefault(); //sets page for input
-  defaultPageLook();
   $('#magGlass').hide();
   $('#addSign').show();
+  $('#inputArea').leftIndent(initial);
 
-
+  // document.getElementById("inputArea").style.marginLeft = "20px";
 }
   const renderAddEmployee = function(event){ //actual input received and appended
   const addNameIn = $('#nameInput').val(); 
@@ -64,8 +64,6 @@ const renderVerifyBtn = function(){ //This happens when VERIFY is clicked on the
  $('#verifyMagGlass').show();
  $('#inputArea').leftIndent("44%");
  $('#viewList').show();
- $('#nameInput').value = "name";
- console.log("does this shit even read my shit?")
 
 }
 const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a verify search
@@ -98,14 +96,7 @@ const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a
     else{
       $('#viewList').prepend(`<h3>Sorry, ${verifyName} is not in our system.`)
     }
-    
-  }
-
-  const renderResetInputs = function() {
-    document.querySelector('#nameInput').value = 'name';
-    document.querySelector('#officeNumInput').value = 'office number';
-    document.querySelector('#employeePhoneInput').value = 'phone number';
-  }
+}
   
 
 
@@ -114,5 +105,4 @@ $("#addBtn").on("click", renderAddBtn);
 $('#addSign').on('click', renderAddEmployee);
 $('#verifyBtn').on('click', renderVerifyBtn);
 $('#verifyMagGlass').on('click',renderVerifyEmployee);
-$('#menu').on('click',renderResetInputs)
 

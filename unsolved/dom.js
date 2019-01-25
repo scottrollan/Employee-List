@@ -83,7 +83,6 @@ const $ = function (selector) {
     }
   }
 
-
   return {
     text: text,
     html: html,
@@ -103,14 +102,16 @@ const $ = function (selector) {
 
 const defaultPageLook = function() {
   event.preventDefault(); //sets page for input
+  $('#inputArea').leftIndent("21%");
+  $('#viewList').hide();
   $('#inputArea').show();
   $('#nameInput').show();
-  $('#nameInput').value = 'name'
   $('#officeNumInput').show();
   $('#employeePhoneInput').show();
   $('#magGlass').show();
   $('#addSign').hide();
   $('#verifyMagGlass').hide();
   $('#viewList').empty();
-  $('#inputArea').leftIndent("21%");
+
+
 }
