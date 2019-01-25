@@ -76,6 +76,7 @@ const $ = function (selector) {
       nodeList[i].style.display = 'none';
     }
   }
+
   return {
     text: text,
     html: html,
@@ -90,4 +91,18 @@ const $ = function (selector) {
     show: show,
     hide: hide,
   };
+}
+
+const defaultPageLook = function() {
+  event.preventDefault(); //sets page for input
+  $('#viewList').hide();
+  $('#inputArea').show();
+  $('#nameInput').show();
+  $('#officeNumInput').show();
+  $('#employeePhoneInput').show();
+  $('#magGlass').show();
+  $('#addSign').hide();
+  $('#verifyMagGlass').hide();
+  $('#viewList').empty();
+
 }

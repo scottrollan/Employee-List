@@ -74,7 +74,8 @@ li {
 }
 
 #addSign,
-#magGlass {
+#magGlass,
+#verifyMagGlass {
     height: 38px;
     width: auto;
     vertical-align: middle;
@@ -84,7 +85,7 @@ li {
     border: solid 1px #333333;
 }
 
-div#viewList div {
+div#viewList div {  /* puts a box around each employee listing */
     margin-left: 21%;
     margin-top: 10px;
     border: solid 1px #999999;
