@@ -112,6 +112,7 @@ const $ = function (selector) {
    $('#addSign').hide();
    $('#updateIcon').hide();
    $('#verifyMagGlass').hide();
+   $('#deleteIcon').hide();
    $('#viewList').empty();
    $('#inputArea').leftIndent("21%");
  }

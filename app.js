@@ -2,6 +2,11 @@
 $('#updateIcon').hide();
 $('#verifyMagGlass').hide();
 $('#addSign').hide();
+$('#deleteIcon').hide();
+let isHere = false;
+let nameIn = '';
+let officeIn = '';
+let phoneIn = '';
 
 
 
@@ -13,9 +18,9 @@ const renderViewBtn = function (event) {
 
   $('#inputArea').hide();
   for(let i = 0; i < employeeList.length; i++){
-    const nameIn = employeeList[i].name;
-    const officeIn = employeeList[i].officeNum;
-    const phoneIn = employeeList[i].phoneNum;
+    nameIn = employeeList[i].name;
+    officeIn = employeeList[i].officeNum;
+    phoneIn = employeeList[i].phoneNum;
     $("#viewList").append(`<div>
 		<h4>Name:  ${nameIn}</h4>
 		<p>Office Number:  ${officeIn}</p>
@@ -39,9 +44,9 @@ const renderAddBtn = function (event) {
   const addOfficeIn = $('#officeNumInput').val();
   const addPhoneIn = $('#employeePhoneInput').val();
   for(let i = 0; i < employeeList.length; i++){
-    const nameIn = employeeList[i].name;
-    const officeIn = employeeList[i].officeNum;
-    const phoneIn = employeeList[i].phoneNum;
+    nameIn = employeeList[i].name;
+    officeIn = employeeList[i].officeNum;
+    phoneIn = employeeList[i].phoneNum;
     $("#viewList").append(`<div>
 		<h4>Name:  ${nameIn}</h4>
 		<p>Office Number:  ${officeIn}</p>
@@ -58,25 +63,22 @@ $('#viewList').show();
 
 
 //--------VERIFY BUTTON EVENT------------------//
-const renderVerifyBtn = function(){ //This happens when VERIFY is clicked on the side menu
+const renderVerifyBtn = function(event){ //This happens when VERIFY is clicked on the side menu
   event.preventDefault(); //sets page for input
- defaultPageLook();
- $('#officeNumInput').hide();
- $('#employeePhoneInput').hide();
- $('#magGlass').hide();
- $('#verifyMagGlass').show();
- $('#inputArea').leftIndent("44%");
- $('#viewList').show();
- $('#nameInput').value = "name";
+  defaultPageLook();
+  $('#officeNumInput').hide();
+  $('#employeePhoneInput').hide();
+  $('#magGlass').hide();
+  $('#verifyMagGlass').show();
+  $('#inputArea').leftIndent("44%");
+  $('#viewList').show();
+  $('#nameInput').value = "name";
 
 }
 const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a verify search
   const verifyName = $('#nameInput').val(); 
-  let isHere = false;
-  let nameIn = '';
-  let officeIn = '';
-  let phoneIn = '';
   $('#viewList').empty();
+  isHere=false;
   for(i=0; i<employeeList.length; i++){
     if(verifyName == employeeList[i].name){
       isHere = true;
@@ -118,10 +120,7 @@ const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a
       const updateName = $('#nameInput').val();
       const updateOffice = $('#officeNumInput').val();
       const updatePhone = $('#employeePhoneInput').val();
-      let isHere = false;
-      let nameIn = '';
-      let officeIn = 0;
-      let phoneIn = 0;
+      isHere=false;
       $('#viewList').empty();
       for(i=0; i<employeeList.length; i++){
         if(updateName == employeeList[i].name){
@@ -146,8 +145,57 @@ const renderVerifyEmployee = function(event){ //thsi happens when "submitting" a
     }
   }
   
-  
-  
+
+    //********DELETE BUTTON EVENT********************
+
+  const renderDeleteBtn = function(event){
+    event.preventDefault(); //sets page for input
+    defaultPageLook();
+    $('#officeNumInput').hide();
+    $('#employeePhoneInput').hide();
+    $('#magGlass').hide();
+    $('#verifyMagGlass').hide();
+    $("addSign").hide();
+    $('#inputArea').leftIndent("44%");
+    $('#viewList').show();
+    $('#deleteIcon').show();
+    $('#nameInput').value = "name";
+  }
+
+    const renderDeleteEmployee = function(event){
+      const deleteName = $('#nameInput').val(); 
+      isHere = false;
+       $('#viewList').empty();
+      for(i=0; i<employeeList.length; i++){
+        nameIn = employeeList[i].name;
+        officeIn = employeeList[i].officeNum;
+        phoneIn = employeeList[i].phoneNum;
+        if(deleteName == employeeList[i].name ){
+          isHere = true;
+          deletedName = employeeList[i].name;
+          $('#viewList').append(`
+          <div>
+          <h4>--- ${deleteName} has been deleted ---</h4>
+          </div>`);
+        }
+        else{
+          $('viewList').prepend(`Sorry, ${deleteName} does not exist and cannot be deleted`);
+          $('#viewList').append(`
+           <div>
+           <h4>Name:  ${nameIn}</h4>
+           <p>Office Number:  ${officeIn}</p>
+           <p>Phone number: ${phoneIn}</p>
+           </div>`);
+          }
+      }
+      if(isHere){
+        $("#viewList").prepend(`<h2>Confirmation: ${deletedName} has been deleted from our system.</h2>`);
+      }
+      else{
+        $('#viewList').prepend(`<h3>Error: ${deleteName} is not in our system.`)
+      }
+    }
+
   
   
   
@@ -166,4 +214,6 @@ $('#verifyBtn').on('click', renderVerifyBtn);
 $('#verifyMagGlass').on('click',renderVerifyEmployee);
 $('#updateBtn').on('click', renderUpdateBtn);
 $('#updateIcon').on('click', renderUpdateEmployee);
-$('#menu').on('click',renderResetInputs)
+$('#deleteBtn').on('click', renderDeleteBtn);
+$('#deleteIcon').on('click', renderDeleteEmployee);
+$('#menu').on('click',renderResetInputs);
