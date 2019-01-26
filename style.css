@@ -75,12 +75,14 @@ li {
 
 #addSign,
 #magGlass,
-#verifyMagGlass {
+#verifyMagGlass,
+#updateIcon {
     height: 38px;
     width: auto;
     vertical-align: middle;
 }
-#addSign {
+#addSign,
+#updateIcon {
     box-sizing: border-box;
     border: solid 1px #333333;
 }
